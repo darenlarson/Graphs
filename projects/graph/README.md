@@ -1,4 +1,4 @@
-# Searching and Generating Graphs
+# Searching and Generating Graphs 
 
 This is a multi-stage project to generate a random social network and find people in a user's extended social network.
 
