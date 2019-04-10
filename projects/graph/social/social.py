@@ -292,15 +292,41 @@ class SocialGraph:
         return None
 
 
+    # def getAllSocialPaths(self, userID):
+    #     visited = {}
+
+    #     for i in range(1, len(self.friendships) + 1):
+    #         print("friendships:", self.friendships)
+    #         visited[i] = self.bfs(userID, i)
+    #         print(visited)
+        
+    #     return {key: value for key, value in visited.items() if value is not None}
+
     def getAllSocialPaths(self, userID):
         visited = {}
 
-        for i in range(1, len(self.friendships) + 1):
-            print("friendships:", self.friendships)
-            visited[i] = self.bfs(userID, i)
-            print(visited)
+        q = Queue()
+        q.enqueue(userID)
+
+        for friend in self.friendships[userID]:
+            q.enqueue(friend)
         
-        return {key: value for key, value in visited.items() if value is not None}
+        print("q.queue:", q.queue)
+
+        while q.size() > 0:
+            print("q.queue:", q.queue)
+            v = q.dequeue()
+
+            if v not in visited:
+                visited[v] = self.bfs(userID, v)
+                print(f"visited[{v}]: {visited[v]}")
+                
+                for next_vert in visited[v]:
+                    print(f"next_vert in visisted[{v}]: {next_vert}")
+                    if next_vert not in visited:
+                        q.enqueue(next_vert)
+
+        print(visited)
 
 
 
