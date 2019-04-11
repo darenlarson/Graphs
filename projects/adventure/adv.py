@@ -76,9 +76,6 @@ def world_traversal():
     return traversalPath
         
 
-
-
-# This will traverse unexplored rooms until it reaches a node (room) that has no exits that haven't been explored
 def go_forward(cur_room_id):
     print("go_forward() invoked")
     print("traversalPath:", traversalPath)
@@ -118,7 +115,6 @@ def go_forward(cur_room_id):
     print("escapePath:", escapePath)
     print("****CURRENT ROOM:", player.currentRoom.id)
     print("graphMap:", graphMap)
-
 
 def go_back(cur_room):
     print("go_back() invoked")
@@ -174,95 +170,6 @@ def unexplored_world_check():
 
 
 world_traversal()
-
-
-# dft() will traverse down until it reaches a node with no 
-# def dft():
-#     # This keeps track of all the moves the player makes.
-#     traversalPath = []
-#     # This keeps track of how the player can move backwards.
-#     escapePath = []
-
-#     # Create a map and add the starting room
-#     graphMap = {}
-#     graphMap[player.currentRoom.id] = {}
-#     # Grab the exits in the current room, loop over the exits, and add them to the
-#     # graphMap with '?' as the value of each exit since they haven't been explored yet.
-
-#     exits = player.currentRoom.getExits()
-#     for exit in exits:
-#         graphMap[player.currentRoom.id][exit] = '?'
-#     print(graphMap)
-
-#     # Start while loop for traversing
-#     unexplored = True
-#     while unexplored == True:
-#         unexplored = False
-#         print("graphMap:", graphMap)
-#         print("CURRENT ROOM:", player.currentRoom.id)
-#         print("EXITS:", exits)
-
-#         # Check to see if any of these directions are available to traverse to.
-#         for direction in ['n','e','s','w']:
-#             print("FART")
-#             # If the direction is available to traverse to...
-#             if direction in graphMap[player.currentRoom.id] and graphMap[player.currentRoom.id][direction] == '?':
-#                 print("POOP")
-#                 # Store the current room in a variable before moving.
-#                 prev_room_id = player.currentRoom.id
-#                 print("prev_room_id:", prev_room_id)
-
-#                 # Have the player travel there (change the current room).
-#                 player.travel(direction)
-#                 print("current room:", player.currentRoom.id)
-
-#                 # Update the traversal path to keep track of the path we take.
-#                 traversalPath.append(direction)
-#                 print("traversalPath:", traversalPath)
-
-#                 # Add the room we just moved into to the graphMap
-#                 if player.currentRoom.id not in graphMap:
-#                     graphMap[player.currentRoom.id] = {}
-
-#                 exits = player.currentRoom.getExits()
-#                 for exit in exits:
-#                     graphMap[player.currentRoom.id][exit] = '?'
-
-#                 # For the previous room, set the room in the direction we moved to the current room
-#                 graphMap[prev_room_id][direction] = player.currentRoom.id
-
-#                 if direction == 'n':
-#                     graphMap[player.currentRoom.id]['s'] = prev_room_id
-#                 elif direction == 's':
-#                     graphMap[player.currentRoom.id]['n'] = prev_room_id
-#                 elif direction == 'e':
-#                     graphMap[player.currentRoom.id]['w'] = prev_room_id
-#                 elif direction == 'w':
-#                     graphMap[player.currentRoom.id]['e'] = prev_room_id
-
-#                 print("unexplored:", unexplored)
-#                 for key in graphMap:
-#                     print("key:", key)
-#                     for direction in ['n','e','s','w']:
-#                         if direction in graphMap[key]:
-#                             print("graphMap[key]:", graphMap[key])
-#                             print("graphMap[key][direction]:", graphMap[key][direction])
-#                             if graphMap[key][direction] == '?':
-#                                 unexplored = True
-#                                 print('unexplored:', unexplored)
-
-#         for i in range(0, len(traversalPath)):
-#             last_direction = traversalPath[len(traversalPath)-1-i]
-#             print("last_direction:",last_direction)
-#             if last_direction == 'n':
-#                 player.travel('s')
-#             elif last_direction == 's':
-#                 player.travel('n')
-#             elif last_direction == 'e':
-#                 player.travel('w')
-#             elif last_direction == 'w':
-#                 player.travel('e')
-
 
 
 
